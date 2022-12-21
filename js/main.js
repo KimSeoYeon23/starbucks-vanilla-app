@@ -1,19 +1,19 @@
 const searchEl = document.querySelector('.search');
 const searchInputEl = searchEl.querySelector('input');
 
-searchEl.addEventListener('click', function() {
+searchEl.addEventListener('click', () => {
     searchInputEl.focus();
 });
 
 // focus 요소가 포커스를 받을 때
-searchInputEl.addEventListener('focus', function() {
+searchInputEl.addEventListener('focus',() => {
     searchEl.classList.add('focused');
     // setAttribute 요소의 속성 값을 정하는 메소드
     searchInputEl.setAttribute('placeholder', '통합검색');
 });
 
 // blur 요소가 포커스를 잃을 때
-searchInputEl.addEventListener('blur', function () { 
+searchInputEl.addEventListener('blur',() => { 
     searchEl.classList.remove('focused');
     searchInputEl.setAttribute('placeholder', '');
 });
@@ -21,7 +21,7 @@ searchInputEl.addEventListener('blur', function () {
 const badgeEl = document.querySelector('header .badges');
 
 // ._throttle(함수, 시간) 함수가 실행되는 시간을 제한을 둠
-window.addEventListener('scroll', _.throttle(function () {
+window.addEventListener('scroll', _.throttle(() => {
     if (window.scrollY > 500) {
         // badge 숨기기
         // gsap.to(요소, 지속시간, 옵션)
@@ -37,3 +37,13 @@ window.addEventListener('scroll', _.throttle(function () {
         })
     }
 }, 300));
+
+// Fade In
+const fadeEls = document.querySelectorAll('.visual .fade-in');
+fadeEls.forEach((fadeEl, index) => {
+    // gsap.to(요소, 지속시간, 옵션)
+    gsap.to(fadeEl, 1, {
+        delay: (index + 1) * .7,
+        opacity: 1,
+    })
+});
