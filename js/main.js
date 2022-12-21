@@ -43,7 +43,7 @@ const fadeEls = document.querySelectorAll('.visual .fade-in');
 fadeEls.forEach((fadeEl, index) => {
     // gsap.to(요소, 지속시간, 옵션)
     gsap.to(fadeEl, 1, {
-        delay: (index + 1) * .7,
+        delay: (index + 1) * .7, // 0.7초뒤, 1.4초 뒤, 2.1초 뒤 실행
         opacity: 1,
     })
 });
