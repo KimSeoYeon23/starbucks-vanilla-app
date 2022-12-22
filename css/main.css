@@ -229,11 +229,13 @@ header .main-menu .item .item__contents {
     width: 100%;
     position: fixed;
     left: 0;
-    display: none;
+    overflow: hidden;
+    height: 0px;
+    transition: height ease-in-out 1s;
 }
 
 header .main-menu .item:hover .item__contents {
-    display: block;
+    height: 100%;
 }
 
 header .main-menu .item .item__contents .contents__menu {
@@ -458,7 +460,14 @@ header .badges .badge {
     height: 693px;
     background-color: var(--beige);
     position: relative;
+    transition: height .4s;
+    overflow: hidden;
 }
+
+.notice .promotion.hide {
+    height: 0px;
+}
+
 
 .notice .promotion .swiper-container {
     width: calc(819px * 3 + 20px);
