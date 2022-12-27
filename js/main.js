@@ -134,3 +134,7 @@ spyEls.forEach((spyEl) => {
         .setClassToggle(spyEl, 'show')
         .addTo(new ScrollMagic.Controller());
 });
+
+// 현재 몇년도인지 갖고옴
+const thisYear = document.querySelector('.this-year');
+thisYear.textContent = new Date().getFullYear();    // 2022
