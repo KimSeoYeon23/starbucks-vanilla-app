@@ -29,14 +29,29 @@ window.addEventListener('scroll', _.throttle(() => {
             opacity: 0,
             display: 'none',
         });
+        // 버튼 보이기
+        gsap.to('#to-top', .2, {
+            x: 0,
+        });
     } else {
         // badge 보이기
         gsap.to(badgeEl, .3, {
             opacity: 1,
             display: 'block',
-        })
+        });
+        // 버튼 숰기기
+        gsap.to('#to-top', .2, {
+            x: 100,
+        });
     }
 }, 300));
+
+const toTopEl = document.querySelector('#to-top');
+toTopEl.addEventListener('click', () => {
+    gsap.to(window, .7, {
+        scrollTo: 0         // 스크롤 위치를 0px 위치로 옮김
+    });
+});
 
 // Fade In
 const fadeEls = document.querySelectorAll('.visual .fade-in');
