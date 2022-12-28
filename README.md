@@ -10,9 +10,7 @@ FastCampus 강의를 들으며 만든 사이트입니다.
 <br/>
 
 ## 📌 Skill
-<img alt="HTML" src="https://img.shields.io/badge/HTML-E34F26.svg?style=for-the-badge&logo=HTML5&logoColor=white"/>
-<img alt="CSS3" src="https://img.shields.io/badge/CSS3-1572B6.svg?style=for-the-badge&logo=CSS3&logoColor=white"/>
-<img alt="Javascript" src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=for-the-badge&logo=JavaScript&logoColor=white"/>
+<img alt="HTML" src="https://img.shields.io/badge/HTML-E34F26.svg?style=for-the-badge&logo=HTML5&logoColor=white"/> <img alt="CSS3" src="https://img.shields.io/badge/CSS3-1572B6.svg?style=for-the-badge&logo=CSS3&logoColor=white"/> <img alt="Javascript" src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=for-the-badge&logo=JavaScript&logoColor=white"/>
 
 
 ## 오픈 그래프(The Open Graph protocol)
@@ -97,15 +95,33 @@ KakaoTalk -
 [GSAP Easing](https://greensock.com/docs/v2/Easing)
 
 ```js
-gsap.to(요소, 시간, 옵션)
-// 또는
-TweenMax.to(요소, 시간, 옵션)
-```
+const badgeEl = document.querySelector('header .badges');
 
-```js
-gsap.to(window, .7, {
-  scrollTo: 0
-});
+// ._throttle(함수, 시간) 함수가 실행되는 시간을 제한을 둠
+window.addEventListener('scroll', _.throttle(() => {
+    if (window.scrollY > 500) {
+        // badge 숨기기
+        // gsap.to(요소, 지속시간, 옵션)
+        gsap.to(badgeEl, .3, {
+            opacity: 0,
+            display: 'none',
+        });
+        // 버튼 보이기
+        gsap.to('#to-top', .2, {
+            x: 0,
+        });
+    } else {
+        // badge 보이기
+        gsap.to(badgeEl, .3, {
+            opacity: 1,
+            display: 'block',
+        });
+        // 버튼 숰기기
+        gsap.to('#to-top', .2, {
+            x: 100,
+        });
+    }
+}, 300));
 ```
 <br/>
 <br/>
@@ -163,4 +179,99 @@ new Swiper('.swiper-container', {
   autoplay: true, // 자동 재생 여부
   loop: true // 반복 재생 여부
 });
+```
+<br/>
+<br/>
+
+## Youtube API
+
+[IFrame Player API](https://developers.google.com/youtube/iframe_api_reference?hl=ko)를 통해 YouTube 동영상을 제어할 수 있습니다.
+
+유튜브 영상이 출력될 위치에 요소를 지정(생성)합니다.
+
+```html
+<!-- in HEAD -->
+<script defer src="./js/youtube.js"></script>
+
+<!-- in BODY -->
+<div id="player"></div>
+```
+
+`onYouTubePlayerAPIReady` 함수 이름은 Youtube IFrame Player API에서 사용하는 이름이기 때문에 다르게 지정하면 동작하지 않습니다!<br>
+그리고 함수는 전역(Global) 등록해야 합니다!
+
+[플레이어 매개변수(playerVars)](https://developers.google.com/youtube/player_parameters.html?playerVersion=HTML5&hl=ko#Parameters)에서 더 많은 옵션을 확인할 수 있습니다.
+
+```js
+// 2. This code loads the IFrame Player API code asynchronously.
+const tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+const firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// 3. This function creates an <iframe> (and YouTube player)
+//    after the API code downloads.
+/** 
+ * onYoutubeIframeAPIReady 의 함수 이름은 
+ * 외부에서 가져오는 유튜브를 제어할 수 있는
+ * 외부 자바스크립트 라이브러리에서 함수 이름을 자동으로
+ * 찾게 만들었으므로 같은 이름으로 써야함
+ * */ 
+function onYouTubeIframeAPIReady() {
+    // 'plyer' 라는 id 값을 찾음 <div id='player'></div>
+    new YT.Player('player', {
+        videoId: 'An6LvWQuj_8',         // 최초 재생할 유튜브 영상 ID
+        playerVars: {
+            autoplay: true,             // 자동 재생 유무
+            loop: true,                 // 반복 재생 유무
+            playlist: 'An6LvWQuj_8',    // 반복 재생할 유튜브 영상 ID 목록
+        },
+        events: {
+            onReady: function (event) {
+                event.target.mute();    // 음소거
+            }
+        },
+    });
+}
+```
+<br/>
+<br/>
+
+## ScrollMagic
+
+[ScrollMagic](https://github.com/janpaepke/ScrollMagic)은 스크롤과 요소의 상호 작용을 위한 자바스크립트 라이브러리입니다.<br>
+대표적으로 어떤 요소가 현재 화면에 보이는 상태인지를 확인할 때 사용합니다.
+
+[ScrollMagic API](http://scrollmagic.io/docs/)
+
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
+```
+
+```js
+// ScrollMagic
+const spyEls = document.querySelectorAll('section.scroll-spy');
+spyEls.forEach((spyEl) => {
+    new ScrollMagic
+        .Scene({
+            triggerElement: spyEl,      // 보여짐 여부를 감시할 요소를 지정
+            triggerHook: .8,            // 감시하고 있는 요소가 viewport에서 어느 지점에서 감시되었다는 것을 판단하는지 지정하는 옵션
+        })
+        .setClassToggle(spyEl, 'show')
+        .addTo(new ScrollMagic.Controller());
+});
+```
+<br/>
+<br/>
+
+## Lodash
+
+[Lodash](https://lodash.com/)는 다양한 유틸리티 기능을 제공하는 자바스크립트 라이브러리입니다.
+
+[Lodash API](https://lodash.com/docs/4.17.15) <br>
+[Lodash throttle](https://lodash.com/docs/4.17.15#throttle)
+
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>
 ```
