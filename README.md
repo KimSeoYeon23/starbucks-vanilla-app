@@ -8,6 +8,7 @@ FastCampus 강의를 들으며 만든 사이트입니다.
 <br/>
 <br/>
 <br/>
+
 ## 📌 Skill
 <img alt="HTML" src="https://img.shields.io/badge/HTML-E34F26.svg?style=for-the-badge&logo=HTML5&logoColor=white"/>
 <img alt="CSS3" src="https://img.shields.io/badge/CSS3-1572B6.svg?style=for-the-badge&logo=CSS3&logoColor=white"/>
@@ -45,6 +46,7 @@ KakaoTalk -
 - `og:url`: 페이지 주소(URL)
 <br/>
 <br/>
+
 ## 트위터 카드(Twitter Cards)
 
 웹페이지가 소셜 미디어(트위터)로 공유될 때 우선적으로 활용되는 정보를 지정합니다.
@@ -68,6 +70,7 @@ KakaoTalk -
 - `twitter:url`: 페이지 주소(URL)
 <br/>
 <br/>
+
 ## Reset.css
 
 각 브라우저의 기본 스타일을 초기화합니다.
