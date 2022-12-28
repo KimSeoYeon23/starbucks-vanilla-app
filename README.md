@@ -1,9 +1,10 @@
 # FastCampus Starbucks Demo
-FastCampus 강의를 들으며 만든 사이트입니다.
+[STARBUCKS Demo Site](https://endearing-cassata-6075df.netlify.app/)  
+FastCampus 강의를 들으며 만든 사이트입니다.  
 <br/>
 <br/>
-<br/>
-## 📅 개발 기간
+
+# 📅 개발 기간
 - 2022 . 12 . 20 ~ 2022 . 12 . 28
 <br/>
 <br/>
