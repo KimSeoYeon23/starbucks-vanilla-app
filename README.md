@@ -1,6 +1,6 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/95d46fe6-4561-4fb4-bd7a-8b5a22bd0c78/deploy-status)](https://app.netlify.com/sites/endearing-cassata-6075df/deploys)
 # FastCampus Starbucks Demo
-[STARBUCKS Demo Site](https://endearing-cassata-6075df.netlify.app/)  
+[STARBUCKS Demo Site](https://starbucks-demo-sy.netlify.app/)  
 FastCampus 강의를 들으며 만든 사이트입니다.  
 <br/>
 <br/>
